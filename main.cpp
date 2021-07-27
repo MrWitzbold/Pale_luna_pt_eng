@@ -3,45 +3,14 @@
 #include <cstdio>
 #include <cstring>
 #include <stdlib.h>
-#include <cstdlib>
 #include<windows.h>
 
 using namespace std;
 
-int main()
+void say_controls(string language)
 {
-    string command = "";
-    bool startup = true;
-    bool door = false;
-    bool path1 = false;
-    bool path2 = false;
-    bool path3 = false;
-    bool hole = false;
-    bool hole_gold = false;
-    bool crash = false;
-
-    bool language_chosen = false;
-    string language = "";
-
-    while (language_chosen == false)
+    if(language == "eng")
     {
-        cout << "Write 'eng' if you want to play this in english\n";
-        cout << "Escreva ptbr se voce quiser jogar em portugues\n";
-        cin >> language;
-        if(language == "eng" || language == "ptbr")
-        {
-            language_chosen = true;
-        }
-    }
-
-    bool playing = true;
-
-    while(playing == true)
-    {
-        system("cls");
-
-        if(language == "eng")
-        {
             cout << "Commands:\n";
             cout << "PICK_UP_SHOVEL\n";
             cout << "PICK_UP_ROPE\n";
@@ -64,32 +33,98 @@ int main()
             cout << "GO_WEST\n";
             cout << "GO_EAST\n\n";
             cout << "=======================================================\n\n";
-        }
-        if(language == "ptbr")
+    }
+    if(language == "ptbr")
+    {
+        cout << "Comandos:\n";
+        cout << "PEGAR_PA\n";
+        cout << "PEGAR_CORDA\n";
+        cout << "ABRIR_PORTA\n";
+        cout << "IR_LESTE\n";
+        cout << "USAR_OURO\n";
+        cout << "USAR_PA\n";
+        cout << "USAR_CORDA\n";
+        cout << "ENCHER_BURACO_COM_TERRA\n";
+        cout << "COLOCAR_TERRA_NO_BURACO\n";
+        cout << "ENCHER_BURACO\n";
+        cout << "SOLTAR_OURO\n";
+        cout << "SOLTAR_OURO_NO_BURACO\n";
+        cout << "POSICIONAR_OURO_NO_BURACO\n"; // posicionar = place
+        cout << "COLOCAR_OURO\n"; // colocar = put
+        cout << "ENTERRAR_OURO\n";
+        cout << "CAVAR_BURACO_NO_CHAO\n";
+        cout << "CAVAR_BURACO\n";
+        cout << "IR_NORTE\n";
+        cout << "IR_OESTE\n";
+        cout << "IR_LESTE\n\n";
+        cout << "=======================================================\n\n";
+    }
+}
+
+int main()
+{
+    string command = "";
+    bool startup = true;
+    bool door = false;
+    bool path1 = false;
+    bool path2 = false;
+    bool path3 = false;
+    bool hole = false;
+    bool hole_gold = false;
+
+    bool debug_mode = true;
+
+    bool language_chosen = false;
+    string language = "";
+
+    while (language_chosen == false)
+    {
+        cout << "Write 'eng' if you want to play this in english\n";
+        cout << "Escreva ptbr se voce quiser jogar em portugues\n";
+        cin >> language;
+        if(language == "eng" || language == "ptbr")
         {
-            cout << "Comandos:\n";
-            cout << "PEGAR_PA\n";
-            cout << "PEGAR_CORDA\n";
-            cout << "ABRIR_PORTA\n";
-            cout << "IR_LESTE\n";
-            cout << "USAR_OURO\n";
-            cout << "USAR_PA\n";
-            cout << "USAR_CORDA\n";
-            cout << "ENCHER_BURACO_COM_TERRA\n";
-            cout << "COLOCAR_TERRA_NO_BURACO\n";
-            cout << "ENCHER_BURACO\n";
-            cout << "SOLTAR_OURO\n";
-            cout << "SOLTAR_OURO_NO_BURACO\n";
-            cout << "POSICIONAR_OURO_NO_BURACO\n"; // posicionar = place
-            cout << "COLOCAR_OURO\n"; // colocar = put
-            cout << "ENTERRAR_OURO\n";
-            cout << "CAVAR_BURACO_NO_CHAO\n";
-            cout << "CAVAR_BURACO\n";
-            cout << "IR_NORTE\n";
-            cout << "IR_OESTE\n";
-            cout << "IR_LESTE\n\n";
-            cout << "=======================================================\n\n";
+            language_chosen = true;
         }
+    }
+
+    bool playing = true;
+
+    while(playing == true)
+    {
+        if(debug_mode == true)
+        {
+            if(startup == true)
+            {
+                cout << "\nAT STARTUP\n";
+            }
+            if(door == true)
+            {
+                cout << "\nAT DOOR\n";
+            }
+            if(path1 == true)
+            {
+                cout << "\nAT PATH1\n";
+            }
+            if(path2 == true)
+            {
+                cout << "\nAT PATH2\n";
+            }
+            if(path3 == true) 
+            {
+                cout << "\nAT PATH3\n";
+            }
+            if(hole == true)
+            {
+                cout << "\nAT HOLE\n";
+            }
+            if(hole_gold == true)
+            {
+                cout << "\nAT HOLE_GOLD\n";
+            }
+        }
+
+        say_controls(language);
 
         if(startup == true)
         {
@@ -102,7 +137,7 @@ int main()
             }
             if(language == "ptbr")
             {
-                cout << "-Voce esta em um quarto escuro. Voce ve a luz da lua pela janela.\n\n";
+                cout << "\n-Voce esta em um quarto escuro. Voce ve a luz da lua pela janela.\n\n";
                 cout << "-Tem OURO no canto do quarto, uma pa e uma corda.\n\n";
                 cout << "-Tem uma porta ao LESTE.\n\n";
                 cout << "-Comando?\n";
@@ -118,9 +153,12 @@ int main()
                 path3 = false;
                 hole = false;
                 hole_gold = false;
-                crash = false;
             }
+            Sleep(5000);
+            system("cls");
         }
+
+        say_controls(language);
 
         if(door == true)
         {
@@ -134,7 +172,7 @@ int main()
             }
             if(language == "ptbr")
             {
-                cout << "-Colete sua recompensa.\n\n";
+                cout << "\n-Colete sua recompensa.\n\n";
                 cout << "-A LUA PALIDA SORRI PARA VOCE\n\n";
                 cout << "-Voce esta em uma floresta. Existem caminhos para o NORTE, OESTE e LESTE\n\n";
                 cout << "-Colete sua recompensa.\n\n";
@@ -189,9 +227,196 @@ int main()
                 path3 = false;
                 hole = false;
                 hole_gold = false;
-                crash = false;
             }
             Sleep(5000);
+            system("cls");
         }
+
+        say_controls(language);
+
+        if(path1 == true)
+        {
+            if(language == "eng")
+            {
+                cout << "-Reap your reward.\n\n";
+                cout << "-PALE LUNA SMILES AT YOU.\n\n";
+                cout << "-You are in a forest. There are paths to the NORTH, WEST, and EAST.\n\n";
+                cout << "-Command?\n";
+            }
+            if(language == "ptbr")
+            {
+                cout << "\n-Colete sua recompensa.\n\n";
+                cout << "-A LUA PALIDA SORRI PARA VOCE\n\n";
+                cout << "-Voce esta em uma floresta. Existem caminhos para o NORTE, OESTE e LESTE.\n\n";
+                cout << "-Comando?\n";
+            }
+            cout << "- ";
+            cin >> command;
+
+            if(command == "USE_GOLD" || command == "USAR_OURO")
+            {
+                if(language == "eng")
+                {
+                    cout << "\n\nNot here.\n";
+                }
+                if(language == "ptbr")
+                {
+                    cout << "\n\nAqui nao.\n";
+                }
+            }
+            if(command == "USE_SHOVEL" || command == "USAR_PA")
+            {
+                if(language == "eng")
+                {
+                    cout << "\n\nNot now.\n";
+                }
+                if(language == "ptbr")
+                {
+                    cout << "\n\nAgora nao.\n";
+                }
+            }
+            if(command == "USE_ROPE" || command == "USAR_CORDA")
+            {
+                if(language == "eng")
+                {
+                    cout << "\n\nUsed this.\n";
+                }
+                if(language == "ptbr")
+                {
+                    cout << "\n\nUsou isto.\n";
+                }
+            }
+            if(command == "GO_WEST" || command == "IR_OESTE" || command == "GO_NORTH" || command == "IR_NORTE")
+            {
+                return 0;
+            }
+            if(command == "GO_EAST" || command == "IR_LESTE")
+            {
+                startup = false;
+                door = false;
+                path1 = false;
+                path2 = true;
+                path3 = false;
+                hole = false;
+                hole_gold = false;
+            }
+            Sleep(5000);
+            system("cls");
+        }
+    
+        say_controls(language);
+
+        if(path2 == true) 
+        {
+            if(language == "eng")
+            {
+                cout << "-Reap your reward.\n\n";
+                cout << "-PALE LUNA SMILES AT YOU.\n\n";
+                cout << "-You are in a forest. There are paths to the NORTH, WEST, and EAST.\n\n";
+                cout << "-Command?\n";
+            }
+            if(language == "ptbr")
+            {
+                cout << "\n-Colete sua recompensa.\n\n";
+                cout << "-A LUA PALIDA SORRI PARA VOCE\n\n";
+                cout << "-Voce esta em uma floresta. Existem caminhos para o NORTE, OESTE e LESTE.\n\n";
+                cout << "-Comando?\n";
+            }
+            cout << "- ";
+            cin >> command;
+
+            if(command == "USE_GOLD" || command == "USAR_OURO")
+            {
+                if(language == "eng")
+                {
+                    cout << "\n\nNot here.\n";
+                }
+                if(language == "ptbr")
+                {
+                    cout << "\n\nAqui nao.\n";
+                }
+            }
+            if(command == "USE_SHOVEL" || command == "USAR_PA")
+            {
+                if(language == "eng")
+                {
+                    cout << "\n\nNot now.\n";
+                }
+                if(language == "ptbr")
+                {
+                    cout << "\n\nAgora nao.\n";
+                }
+            }
+            if(command == "USE_ROPE" || command == "USAR_CORDA")
+            {
+                if(language == "eng")
+                {
+                    cout << "\n\nUsed this.\n";
+                }
+                if(language == "ptbr")
+                {
+                    cout << "\n\nUsou isto.\n";
+                }
+            }
+            if(command == "GO_WEST" || command == "IR_OESTE")
+            {
+                startup = false;
+                door = false;
+                path1 = false;
+                path2 = false;
+                path3 = true;
+                hole = false;
+                hole_gold = false;
+            }
+            if(command == "GO_NORTH" || command == "IR_NORTE" || command == "GO_EAST" || command == "IR_LESTE")
+            {
+                return 0;
+            }
+            Sleep(5000);
+            system("cls");
+        }
+        
+        say_controls(language);
+        
+        if(path3 == true)
+        {
+            if(language == "eng")
+            {
+                cout << "-PALE LUNA SMILES WIDE.\n\n";
+                Sleep(2000);
+                cout << "-There are no paths.\n\n";
+                Sleep(2000);
+                cout << "-PALE LUNA SMILES WIDE.\n\n";
+                Sleep(2000);
+                cout << "-The ground is soft.\n\n";
+                Sleep(2000);
+                cout << "-PALE LUNA SMILES WIDE.\n\n";
+                Sleep(2000);
+                cout << "-Here.\n\n";
+                Sleep(2000);
+                cout << "-Command?\n";
+                Sleep(2000);
+            }
+            if(language == "ptbr")
+            {
+                cout << "-A LUA PALIDA SORRI DE ORELHA A ORELHA.\n\n";
+                Sleep(2000);
+                cout << "-Não existem caminhos.\n\n";
+                Sleep(2000);
+                cout << "-A LUA PALIDA SORRI DE ORELHA A ORELHA.\n\n";
+                Sleep(2000);
+                cout << "-O chao e macio\n\n";
+                Sleep(2000);
+                cout << "-A LUA PALIDA SORRI DE ORELHA A ORELHA.\n\n";
+                Sleep(2000);
+                cout << "-Aqui.\n\n";
+                Sleep(2000);
+                cout << "-Comando?\n";
+                Sleep(2000);
+            }
+            cout << "- ";
+            cin >> command;
+        }
+     
     }
 }
