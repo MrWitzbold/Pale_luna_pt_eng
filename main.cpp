@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include <stdlib.h>
-#include<windows.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -155,7 +155,7 @@ int main()
                 hole = false;
                 hole_gold = false;
             }
-            Sleep(5000);
+            usleep(5000);
             system("cls");
         }
 
@@ -229,7 +229,7 @@ int main()
                 hole = false;
                 hole_gold = false;
             }
-            Sleep(5000);
+            usleep(5000);
             system("cls");
         }
 
@@ -301,7 +301,7 @@ int main()
                 hole = false;
                 hole_gold = false;
             }
-            Sleep(5000);
+            usleep(5000);
             system("cls");
         }
     
@@ -373,7 +373,7 @@ int main()
             {
                 return 0;
             }
-            Sleep(5000);
+            usleep(5000);
             system("cls");
         }
         
@@ -384,36 +384,36 @@ int main()
             if(language == "eng")
             {
                 cout << "-PALE LUNA SMILES WIDE.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-There are no paths.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-PALE LUNA SMILES WIDE.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-The ground is soft.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-PALE LUNA SMILES WIDE.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-Here.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-Command?\n";
-                Sleep(2000);
+                usleep(2000);
             }
             if(language == "ptbr")
             {
                 cout << "-A LUA PALIDA SORRI DE ORELHA A ORELHA.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-Nao existem caminhos.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-A LUA PALIDA SORRI DE ORELHA A ORELHA.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-O chao e macio\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-A LUA PALIDA SORRI DE ORELHA A ORELHA.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-Aqui.\n\n";
-                Sleep(2000);
+                usleep(2000);
                 cout << "-Comando?\n";
-                Sleep(2000);
+                usleep(2000);
             }
             cout << "- ";
             cin >> command;
@@ -428,7 +428,7 @@ int main()
                 hole = true;
                 hole_gold = false;
             }
-            Sleep(5000);
+            usleep(5000);
             system("cls");
         }
     
@@ -459,7 +459,7 @@ int main()
                 hole = false;
                 hole_gold = true;
             }
-            Sleep(5000);
+            usleep(5000);
             system("cls");
         }
     
@@ -491,7 +491,7 @@ int main()
                 hole_gold = false;
                 end = true;
             }
-            Sleep(5000);
+            usleep(5000);
             system("cls");
         }
 
@@ -509,7 +509,7 @@ int main()
                 cout << "-- 40.24248 --\n\n";
                 cout << "-- 121.4434 -- ";
             }
-            Sleep(15000);
+            usleep(15000);
             return 0;
         }
     }
