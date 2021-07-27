@@ -71,6 +71,7 @@ int main()
     bool path3 = false;
     bool hole = false;
     bool hole_gold = false;
+    bool end = false;
 
     bool debug_mode = true;
 
@@ -401,7 +402,7 @@ int main()
             {
                 cout << "-A LUA PALIDA SORRI DE ORELHA A ORELHA.\n\n";
                 Sleep(2000);
-                cout << "-Não existem caminhos.\n\n";
+                cout << "-Nao existem caminhos.\n\n";
                 Sleep(2000);
                 cout << "-A LUA PALIDA SORRI DE ORELHA A ORELHA.\n\n";
                 Sleep(2000);
@@ -416,7 +417,100 @@ int main()
             }
             cout << "- ";
             cin >> command;
+
+            if(command == "DIG_HOLE" || command == "CAVAR_BURACO")
+            {
+                startup = false;
+                door = false;
+                path1 = false;
+                path2 = false;
+                path3 = false;
+                hole = true;
+                hole_gold = false;
+            }
+            Sleep(5000);
+            system("cls");
         }
-     
+    
+        say_controls(language);
+
+        if(hole == true)
+        {
+            if(language == "eng") 
+            {
+                cout << "-There is now a HOLE.\n\n";
+                cout << "-Command?\n";
+            }
+            if(language == "ptbr") 
+            {
+                cout << "-Agora existe um BURACO\n\n";
+                cout << "-Comando?\n";
+            }
+            cout << "- ";
+            cin >> command;
+
+            if(command == "DROP_GOLD" || command == "SOLTAR_OURO")
+            {
+                startup = false;
+                door = false;
+                path1 = false;
+                path2 = false;
+                path3 = false;
+                hole = false;
+                hole_gold = true;
+            }
+            Sleep(5000);
+            system("cls");
+        }
+    
+        say_controls(language);
+
+        if(hole_gold == true) 
+        {
+            if(language == "eng")
+            {
+                cout << "-The GOLD is in the HOLE.\n\n";
+                cout << "-Command?\n";
+            }
+            if(language == "ptbr") 
+            {
+                cout << "-O OURO esta no BURACO.\n\n";
+                cout << "-Comando?\n";
+            }
+            cout << "- ";
+            cin >> command;
+
+            if(command == "FILL_HOLE" || command == "ENCHER_BURACO") 
+            {
+                startup = false;
+                door = false;
+                path1 = false;
+                path2 = false;
+                path3 = false;
+                hole = false;
+                hole_gold = false;
+                end = true;
+            }
+            Sleep(5000);
+            system("cls");
+        }
+
+        if(end == true)
+        {
+            if(language == "eng")
+            {
+                cout << "-Congratulations\n\n";
+                cout << "-- 40.24248 --\n\n";
+                cout << "-- 121.4434 -- ";
+            }
+            if(language == "ptbr")
+            {
+                cout << "-Parabens\n\n";
+                cout << "-- 40.24248 --\n\n";
+                cout << "-- 121.4434 -- ";
+            }
+            Sleep(15000);
+            return 0;
+        }
     }
 }
